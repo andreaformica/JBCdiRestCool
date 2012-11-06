@@ -148,6 +148,32 @@
 		</jar>
 	</target>
 
+	<target name="deploy" depends="build">
+	    <!-- Build path for deployed war-file -->
+	    <property name="war.filename" value="${build.lib.dir}/${ant.project.name}.war" />
+	    <property name="deployed.war" value="${jboss.home}/${jboss.deploy.dir}/${ant.project.name}.war" />
+
+	    <!-- remove current deployed war -->
+	    <delete file="${deployed.war}.deployed" failonerror="false" />
+	    <waitfor maxwait="10" maxwaitunit="second">
+	        <available file="${deployed.war}.undeployed" />
+	    </waitfor>
+	    <delete dir="${deployed.war}" />
+
+	    <!-- copy war-file -->
+	    <copy file="${war.filename}" todir="${jboss.home}/${jboss.deploy.dir}" />
+
+	    <!-- start deployment -->
+	    <echo>start deployment ...</echo>
+	    <touch file="${deployed.war}.dodeploy" />
+
+	    <!-- wait for deployment to complete -->
+	    <waitfor maxwait="10" maxwaitunit="second">
+	        <available file="${deployed.war}.deployed" />
+	    </waitfor>
+	    <echo>deployment ok!</echo>
+	</target>
+	
 	<target name="build" depends="client-war" />
 	
 	<target name="rebuild" depends="clean, build" />
