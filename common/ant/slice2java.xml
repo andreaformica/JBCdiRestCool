@@ -1,0 +1,17 @@
+<project name="Slice2JavaTask">
+	<import file="commontasks.xml" />
+
+	<!-- ZeroC/Ice slice2java -->
+	<target name="init-slice2java" depends="init-properties,init-ice">
+		<taskdef name="slice2java" classname="Slice2JavaTask" classpath="${antice.lib.dir}/ant-ice.jar" />
+	</target>
+
+	<!-- ZeroC/Ice classpath -->
+	<target name="init-ice" depends="init-properties">
+		<property name="ice.home" location="/usr" />
+		<property name="ice.lib.dir" location="${ice.home}/share/java" />
+		<path id="ice.classpath" path="${ice.lib.dir}/Ice.jar" />
+	</target>
+
+	
+</project>

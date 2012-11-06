@@ -1,0 +1,61 @@
+<project name="TestNGTask">
+	<import file="commontasks.xml" />
+
+	<!-- Init -->
+	<target name="init-testng" depends="init">
+		<property name="testng.report.dir" value="${basedir}/test-output" />
+		<property name="test.src.dir" value="${basedir}/tests" />
+		<property name="test.build.dir" value="${basedir}/build/test" />
+		<property name="test.build.classes.dir" value="${test.build.dir}/classes" />
+		<path id="testng.classpath">
+			<fileset dir="${lib.dir}">
+				<include name="testng.jar" />
+			</fileset>
+		</path>
+
+		<path id="run.cp">
+			<path refid="testng.classpath" />
+			<path refid="project.class.path" />
+			<pathelement location="${test.build.classes.dir}"/>
+			<pathelement location="${build.classes.dir}" />
+		</path>
+	<!--	<taskdef name="testng" classpathref="testng.classpath" classname="org.testng.TestNGAntTask" /-->
+		<taskdef resource="testngtasks" classpath="${lib.dir}/testng.jar"/>
+	</target>
+
+	
+	<!-- TestNG -->
+	<!-- Prepare -->
+	<target name="prepare-testng" depends="init-testng,prepare">
+		<mkdir dir="${test.build.dir}" />
+		<mkdir dir="${test.build.classes.dir}" />
+	</target>
+
+	<target name="copy-resources" depends="prepare-testng"/>
+	<target name="compile" depends="copy-resources"/>
+
+	<!-- compile -->
+	<target name="compile-testng" depends="prepare-testng, compile">
+		<javac debug="true" srcdir="${test.src.dir}" destdir="${test.build.classes.dir}" verbose="no">
+			<classpath>
+				<path refid="project.class.path" />
+				<path refid="testng.classpath" />
+				<pathelement location="${build.classes.dir}"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- run testng -->
+	<target name="run-testng" depends="compile-testng">	
+		<testng classpathref="run.cp" 
+			annotations="JDK"
+			outputDir="${testng.report.dir}" 
+			haltOnFailure="true" verbose="2">
+			<xmlfileset dir="${basedir}" includes="testng.xml"/>
+		</testng>
+		<!-- testng classpathref="run.cp" outputDir="${testng.report.dir}" haltOnFailure="true" verbose="2">
+			<classfileset dir="${test.build.classes.dir}" includes="**/*.class" />
+		</testng -->
+	</target>
+	
+</project>
