@@ -47,6 +47,7 @@ public class CoolBean implements CoolDAO {
 		params[2] =node;
 		log.info("Using query "+NodeType.QUERY_FINDNODES+" with "+schema+" "+db+" "+node);
 		List<NodeType> nodelist = (List<NodeType>) coolrep.findCoolList(NodeType.QUERY_FINDNODES,params);
+		log.info("Retrieved a list of "+nodelist.size()+" nodes");
 		return nodelist;
 	}
 

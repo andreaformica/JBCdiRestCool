@@ -38,7 +38,7 @@ import atlas.cool.annotations.CoolQuery;
  + " folder_tagtablename ," 
  + " folder_channeltablename, " 
  + " rownum "
- + "from table(cool_select_pkg.f_get_nodes(:schema,:dbname,:node))", resultClass = NodeType.class)
+ + "from table(cool_select_pkg.f_getall_nodes(:schema,:dbname,:node))", resultClass = NodeType.class)
 })
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
