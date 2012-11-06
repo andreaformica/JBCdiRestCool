@@ -1,3 +1,6 @@
 [submodule "external"]
 	path = external
 	url = /Users/formica/MyApp/Library/external
+[submodule "common"]
+	path = common
+	url = /Users/formica/MyApp/Library/common
