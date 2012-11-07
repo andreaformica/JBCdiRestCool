@@ -12,7 +12,6 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -30,11 +29,6 @@ import javax.persistence.Entity;
 import org.jboss.vfs.VirtualFile;
 import org.reflections.Reflections;
 import org.reflections.ReflectionsException;
-import org.reflections.scanners.ResourcesScanner;
-import org.reflections.scanners.SubTypesScanner;
-import org.reflections.scanners.TypeAnnotationsScanner;
-import org.reflections.util.ClasspathHelper;
-import org.reflections.util.ConfigurationBuilder;
 import org.reflections.vfs.SystemDir;
 import org.reflections.vfs.Vfs;
 import org.reflections.vfs.ZipDir;
@@ -121,7 +115,6 @@ public class CoolQueryRepository {
 		return null;
 	}
 	
-	@SuppressWarnings("rawtypes")
 	private void findAnnotatedClasses(final String pckgname)
 			throws CoolIOException {
 //		System.out.println("Check package " + pckgname);
