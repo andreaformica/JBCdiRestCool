@@ -13,9 +13,6 @@ import javax.inject.Named;
 import atlas.cool.rest.model.CmpCoolComaGlobalTagType;
 import atlas.cool.rest.model.CmpCoolComaNodeType;
 import atlas.cool.rest.model.CmpCoolComaTagType;
-import atlas.cool.rest.model.NodeGtagTagType;
-import atlas.cool.rest.model.NodeType;
-import atlas.cool.rest.model.SchemaNodeTagType;
 
 @Named
 @Stateless
