@@ -11,4 +11,5 @@ public interface CoolDAO {
 	public List<NodeType> retrieveNodesFromSchemaAndDb(String schema, String db, String node) throws CoolIOException;
 	public List<SchemaNodeTagType> retrieveTagsFromNodesSchemaAndDb(String schema, String db, String node, String tag) throws CoolIOException;
 	public List<NodeGtagTagType> retrieveGtagTagsFromSchemaAndDb(String schema, String db, String gtag) throws CoolIOException;
+
 }
