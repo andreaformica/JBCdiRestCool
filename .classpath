@@ -18,5 +18,6 @@
 	<classpathentry kind="var" path="EXTERNALS_LIB/share/java/utils/javassist-3.12.1.GA.jar"/>
 	<classpathentry kind="var" path="EXTERNALS_LIB/share/java/utils/jsr305-1.3.9.jar"/>
 	<classpathentry kind="var" path="EXTERNALS_LIB/share/java/utils/slf4j-api-1.6.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JBCoolEjbs"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

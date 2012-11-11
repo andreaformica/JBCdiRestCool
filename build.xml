@@ -10,9 +10,13 @@
 		<property name="resources.dir" value="${basedir}/WebContent"/>
 		
 		<property name="build.exe" value="${build.dir}/exe" />
+		<property name="all.lib.dir" value="${basedir}/lib" />
 
 		<path id="external.classpath">
 			<fileset dir="${basedir}/external/share/java/utils">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="${basedir}/lib">
 				<include name="*.jar" />
 			</fileset>
 		</path>
@@ -147,6 +151,21 @@
 			</fileset>
 		</jar>
 	</target>
+	<!-- war -->
+	<target name="client-warinear" depends="prepare,prepare-web,compile-web">
+		<jar jarfile="${build.lib.dir}/${ant.project.name}.war">
+			<fileset dir="${build.dir}/classes">
+				<include name="**/*xml" />
+				<include name="**/*html" />
+				<include name="**/*gif" />
+				<include name="**/*css" />
+				<include name="**/*png" />
+				<include name="WEB-INF/**/*" />
+				<exclude name="**/META-INF/persistence.xml" />
+				<exclude name="WEB-INF/*-ds.xml" />
+			</fileset>
+		</jar>
+	</target>
 
 	<target name="deploy" depends="build">
 	    <!-- Build path for deployed war-file -->
@@ -175,6 +194,7 @@
 	</target>
 	
 	<target name="build" depends="client-war" />
+	<target name="build-inear" depends="client-warinear" />
 	
 	<target name="rebuild" depends="clean, build" />
 	
