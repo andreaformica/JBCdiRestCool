@@ -22,9 +22,9 @@ import javax.persistence.PersistenceContext;
  * private EntityManager em;
  * </pre>
  */
-public class Resources {
+public class WarResources {
    // use @SuppressWarnings to tell IDE to ignore warnings about field not being referenced directly
-   @SuppressWarnings("unused")
+/*   @SuppressWarnings("unused")
    @Produces
    @PersistenceContext
    private EntityManager em;
@@ -33,7 +33,7 @@ public class Resources {
    public Logger produceLog(InjectionPoint injectionPoint) {
       return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
    }
-   
+*/   
    @Produces
    @RequestScoped
    public FacesContext produceFacesContext() {
